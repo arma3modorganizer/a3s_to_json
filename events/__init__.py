@@ -7,12 +7,16 @@ def getInstDecls(s: str) -> str:
 
 
 def parse_jd(deserialize_raw: str) -> dict:
+    raise NotImplementedError
+
+    """
     instDecl = getInstDecls(deserialize_raw)
 
-    serverinfo = dict()
-    serverinfo["SERVER_INFO"] = JDeserialize.GetInstanceAsDictWOIDesc(instDecl, "repository.ServerInfo")
+    events = dict()
+    events["EVENTS"] = JDeserialize.GetInstanceAsDictWOIDesc(instDecl, "TODO")
 
-    return serverinfo
+    return events
+    """
 
 
 def parse(url: str) -> dict:

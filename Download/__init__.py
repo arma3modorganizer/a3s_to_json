@@ -3,7 +3,6 @@ import gzip
 import os
 import tempfile
 import urllib.request
-import subprocess
 
 
 def downloadFile(url: str) -> str:

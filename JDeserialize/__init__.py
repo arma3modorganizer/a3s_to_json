@@ -38,6 +38,10 @@ rNULL = re.compile(r"null")
 rINTEGER = re.compile(r"\w+:\s\d+")
 rBOOL = re.compile(r"\w+:\s(true|false)")
 rSYNC_DIR_TREE = re.compile(r"fr\.soe\.a3s\.domain\.repository\.SyncTreeDirectory\s_")
+rARRAY_LIST = re.compile(r":\sjava\.util\.ArrayList\s")
+rDATE = re.compile(r"java\.util\.Date")
+rCHANGELOG = re.compile(r"fr\.soe\.a3s\.domain\.repository\.Changelog\s_h0x")
+rBLOCKDATA = re.compile(r"blockdata\s\w+:\s\d+")
 
 
 class IType(Enum):
@@ -50,6 +54,10 @@ class IType(Enum):
     INTEGER = 7
     BOOL = 8
     SYNC_TREE_DIR = 9
+    ARRAY_LIST = 10
+    DATE = 11
+    CHANGELOG = 12
+    BLOCKDATA = 13
 
 
 def getInstanceData(line: str) -> ():
@@ -66,7 +74,7 @@ def getEnumData(line: str) -> ():
 
 def getStringData(line: str) -> ():
     ls = line.split(":")
-    name = ls[0].strip()
+    name = ls[0].strip().strip("[")
     value = ls[-1].strip()[1:-2]
     return name, value
 
@@ -96,10 +104,36 @@ def getSyncDirTreeData(line: str) -> ():
     return ls[0].strip(), ls[1].strip()[1:]
 
 
+def getArrayListData(line):
+    ls = line.split(":")
+    name = ls[0].strip()
+    value = ls[1].strip()[1:]
+    return name, value
+
+
+def getDateListData(line):
+    ls = line.split(":")
+    name = ls[0].strip()
+    value = ls[1].strip()[1:]
+    return name, value
+
+
+def getChangelogData(line):
+    ls = line.strip().split(" ")
+    value = ls[1]
+    name = "changelog_ptr_{}".format(value)
+    return name, value
+
+
 def GetLineTypeNameAndValue(line: str) -> ():
-    if rINSTANCE.search(line) is not None:
+    if line.strip() == "]" or len(
+            line.strip()) == 0 or "0x7e0003/java.util.ArrayList:" in line or "object annotations" in line or "    java.util.ArrayList" in line:
+        pass
+    elif rINSTANCE.search(line) is not None:
         inst_n = getInstanceData(line)
         return IType.INSTANCE, inst_n[1], inst_n[0]
+    elif rBLOCKDATA.search(line) is not None:
+        pass
     elif rFIELD_DATA.search(line) is not None:
         return IType.FIELD_DATA, "FIELD_DATA", None
     elif rINSTANCE_DESC.search(line) is not None:
@@ -122,10 +156,15 @@ def GetLineTypeNameAndValue(line: str) -> ():
     elif rSYNC_DIR_TREE.search(line) is not None:
         syncData = getSyncDirTreeData(line)
         return IType.SYNC_TREE_DIR, syncData[0], syncData[1]
-    elif line == "]":
-        pass
-    elif "ArrayList" in line:
-        pass
+    elif rARRAY_LIST.search(line) is not None:
+        arrayData = getArrayListData(line)
+        return IType.ARRAY_LIST, arrayData[0], arrayData[1]
+    elif rDATE.search(line) is not None:
+        dateData = getDateListData(line)
+        return IType.DATE, dateData[0], dateData[1]
+    elif rCHANGELOG.search(line) is not None:
+        clData = getChangelogData(line)
+        return IType.CHANGELOG, clData[0], clData[1]
     else:
         print("Could not parse: {}".format(line))
 
@@ -157,14 +196,22 @@ def GetInstanceAsDictWOIDesc(instDecl: str, sIType: str):
 
 
 def findDomainInstances(raw: str, inst_type: str):
-    search_re = r"(\[instance\s0x[0-9a-f]{6}:\s0x[0-9a-f]{6}\/fr\.soe\.a3s\.domain\." + inst_type + r"(\n|.)+?\n\])"
+    search_re = r"(\[instance\s0x[0-9a-f]{6}:\s0x[0-9a-f]{6}\/fr\.soe\.a3s\.domain\." + inst_type + r"\s*\n(\n|.)+?\n\])"
     matches = re.findall(search_re, raw)
     return matches
 
 
-def GetAllInstancesOfType(instDecl: str, t: str) -> dict:
-    instances = findDomainInstances(instDecl, t)
+def findJDomainInstance(raw: str, inst_type: str):
+    search_re = r"(\[instance\s0x[0-9a-f]{6}:\s0x[0-9a-f]{6}\/" + inst_type + r"\s*\n(\n|.)+?\n\])"
+    matches = re.findall(search_re, raw)
+    return matches
 
+
+def GetAllInstancesOfType(instDecl: str, t: str, use_raw: bool = False) -> dict:
+    if use_raw:
+        instances = findJDomainInstance(instDecl, t)
+    else:
+        instances = findDomainInstances(instDecl, t)
     instances_x = dict()
 
     for instance in instances:
@@ -175,6 +222,8 @@ def GetAllInstancesOfType(instDecl: str, t: str) -> dict:
             if line_info is None:
                 continue
 
+            # print("{} -> {} : {}".format(line_info[0], line_info[1], line_info[2]))
+
             if line_info[0] == IType.FIELD_DATA:
                 continue
             if line_info[0] == IType.INSTANCE_DESC:
@@ -183,6 +232,7 @@ def GetAllInstancesOfType(instDecl: str, t: str) -> dict:
             inxv[line_info[1]] = line_info[2]
 
         instances_x[inxv[t.split(".")[-1]]] = inxv
+        # print("====================")
 
     return instances_x
 

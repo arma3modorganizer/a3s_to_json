@@ -1,5 +1,5 @@
-import JDeserialize
 import Download
+import JDeserialize
 
 
 def getInstDecls(s: str) -> str:

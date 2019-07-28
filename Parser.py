@@ -31,6 +31,8 @@ if __name__ == "__main__":
 
     x = repository.parse(url, scheme, parseAutoconf=pAutoconfig, parseServerinfo=pServerinfo, parseEvents=pEvents,
                          parseChangelog=pChangelog, parseSync=pSync)
+    x["TYPE"] = "A3S"
+    x["VERSION"] = "1.0.0" # Change major on any change, that breaks json parsing !
     x_j = json.dumps(x, indent=True)
 
     with open(args.filename, "w") as f:

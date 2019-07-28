@@ -4,45 +4,47 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
 {
  "autoconf": {
   "URL_CONF": {
-   "protocolType": "FTP",
-   "url": "arma.github.com",
-   "password": "ssssssssssssssssssssssss",
    "port": "21",
+   "login": "arma3r",
+   "password": "Arma3ibaBF#4",
+   "protocolType": "FTP",
    "connectionTimeOut": "300000",
-   "login": "ssssssssssssssssssssssss",
+   "url": "arma.hec.wtf",
    "readTimeOut": "300000"
   },
   "AUTO_CONFIG": {
-   "repositoryName": "Github's awesome arma repository"
+   "repositoryName": "HEC-Basis"
   },
   "FAV_SERVER": {
+   "port": "2312",
+   "selected": false,
+   "repositoryName": "HEC-Basis",
+   "name": "HEC",
+   "password": "chill",
    "modsetName": "",
-   "password": "git",
-   "name": "Github Server",
-   "repositoryName": "Github's awesome arma repository",
-   "ipAddress": "arma.github.com",
-   "port": "2302",
-   "selected": false
+   "ipAddress": "arma.hec.wtf"
   }
  },
  "serverinfo": {
   "SERVER_INFO": {
-   "compressedPboFilesOnly": false,
-   "revision": "70",
-   "totalFilesSize": "40967322212",
-   "noPartialFileTransfer": false,
-   "repositoryContentUpdated": true,
    "numberOfConnections": "10",
-   "numberOfFiles": "1776"
+   "numberOfFiles": "1776",
+   "repositoryContentUpdated": true,
+   "noPartialFileTransfer": false,
+   "compressedPboFilesOnly": false,
+   "totalFilesSize": "40967322212",
+   "revision": "70"
   }
  },
  "changelog": {
   "0x7e0076": {
+   "contentUpdated": true,
+   "revision": "65",
+   "newAddons": [],
    "updatedAddons": [
     "@optional"
    ],
    "deletedAddons": [],
-   "newAddons": [],
    "addons": [
     "@ace",
     "@acex",
@@ -64,16 +66,16 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "65"
+   ]
   },
   "0x7e005c": {
+   "contentUpdated": true,
+   "revision": "64",
+   "newAddons": [],
    "updatedAddons": [],
    "deletedAddons": [
     "@ALiVE"
    ],
-   "newAddons": [],
    "addons": [
     "@ace",
     "@acex",
@@ -95,16 +97,16 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "64"
+   ]
   },
   "0x7e0041": {
+   "contentUpdated": true,
+   "revision": "63",
+   "newAddons": [],
    "updatedAddons": [
     "@CBA_A3"
    ],
    "deletedAddons": [],
-   "newAddons": [],
    "addons": [
     "@ace",
     "@acex",
@@ -127,22 +129,22 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "63"
+   ]
   },
   "0x7e0026": {
+   "contentUpdated": true,
+   "revision": "62",
+   "newAddons": [
+    "@CUP_Units",
+    "@CUP_Vehicles",
+    "@CUP_Weapons"
+   ],
    "updatedAddons": [],
    "deletedAddons": [
     "@CUP Units",
     "@CUP Vehicles",
     "@CUP Weapons"
    ],
-   "newAddons": [
-    "@CUP_Units",
-    "@CUP_Vehicles",
-    "@CUP_Weapons"
-   ],
    "addons": [
     "@ace",
     "@acex",
@@ -165,11 +167,16 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "62"
+   ]
   },
   "0x7e0007": {
+   "contentUpdated": true,
+   "revision": "61",
+   "newAddons": [
+    "@CUP Units",
+    "@CUP Vehicles",
+    "@CUP Weapons"
+   ],
    "updatedAddons": [
     "@CUP_Terrains",
     "@optional"
@@ -178,11 +185,6 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@CUP_Units",
     "@CUP_Vehicles",
     "@CUP_Weapons"
-   ],
-   "newAddons": [
-    "@CUP Units",
-    "@CUP Vehicles",
-    "@CUP Weapons"
    ],
    "addons": [
     "@ace",
@@ -206,17 +208,17 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "61"
+   ]
   },
   "0x7e00f8": {
+   "contentUpdated": true,
+   "revision": "70",
+   "newAddons": [],
    "updatedAddons": [
     "@Ares_Achilles",
     "@CBA_A3"
    ],
    "deletedAddons": [],
-   "newAddons": [],
    "addons": [
     "@ace",
     "@acex",
@@ -238,16 +240,16 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "70"
+   ]
   },
   "0x7e00de": {
+   "contentUpdated": true,
+   "revision": "69",
+   "newAddons": [],
    "updatedAddons": [
     "@optional"
    ],
    "deletedAddons": [],
-   "newAddons": [],
    "addons": [
     "@ace",
     "@acex",
@@ -269,16 +271,16 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "69"
+   ]
   },
   "0x7e00c4": {
+   "contentUpdated": true,
+   "revision": "68",
+   "newAddons": [],
    "updatedAddons": [
     "@task_force_radio"
    ],
    "deletedAddons": [],
-   "newAddons": [],
    "addons": [
     "@ace",
     "@acex",
@@ -300,16 +302,16 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "68"
+   ]
   },
   "0x7e00aa": {
+   "contentUpdated": true,
+   "revision": "67",
+   "newAddons": [],
    "updatedAddons": [
     "@optional"
    ],
    "deletedAddons": [],
-   "newAddons": [],
    "addons": [
     "@ace",
     "@acex",
@@ -331,16 +333,16 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "67"
+   ]
   },
   "0x7e0090": {
+   "contentUpdated": true,
+   "revision": "66",
+   "newAddons": [],
    "updatedAddons": [
     "@optional"
    ],
    "deletedAddons": [],
-   "newAddons": [],
    "addons": [
     "@ace",
     "@acex",
@@ -362,9 +364,7 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
     "@RHSUSAF",
     "@task_force_radio",
     "@taw_viewdistance"
-   ],
-   "contentUpdated": true,
-   "revision": "66"
+   ]
   }
  },
  "sync": {
@@ -18789,6 +18789,8 @@ Example Json (bfcbf1a0ddc894774d00849e2072b0159edcf8d3)
  },
  "events": {
   "NYI": "NOT YET SUPPORTED. Please send me an events file, if you want to use this feature (github issue)"
- }
+ },
+ "TYPE": "A3S",
+ "VERSION": "1.0.0"
 }
 ```

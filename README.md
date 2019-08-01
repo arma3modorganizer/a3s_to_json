@@ -23,8 +23,11 @@ python Parser.py ftp://arma.github.com/.a3s/ git_repo.json
 
 # Please note, that this project is WIP, the json output can change at any new commit !
 
-# Credits
+## Licenses
+a3s_to_json is developed under [Unlicense](https://github.com/arma3modorganizer/pyJParse/LICENSE).
+
+## Credits
 
  - [Chris Frohoff for JDeserialize](https://github.com/frohoff/jdeserialize/tree/master/jdeserialize) [Public Domain]
- - [Pycharm](https://www.jetbrains.com/pycharm/) <3
+ - [Jetbrains](https://www.jetbrains.com/) for PyCharm <3
 
